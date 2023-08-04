@@ -13,6 +13,7 @@ let reset=document.querySelector(".reset");
 
 reset.addEventListener('click', function (event) {
     localStorage.clear();
+    location.reload();
     localStorage.setItem("jj", 0);
     for(let i of items){
     
