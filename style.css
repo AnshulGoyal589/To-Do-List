@@ -11,12 +11,19 @@ body{
 }
 header{
     width:100%;
-    border:2px solid red;
+    border:2px solid red; 
+}
+.reset{
+    height:30px;
+    width:30px;
+    position: absolute;
+    right:30px;
+    top:40px;
 }
 #main{
     background-color: lightgray;
 
-}
+}  
 fieldset{
     border:1px solid black;
     width:fit-content;
