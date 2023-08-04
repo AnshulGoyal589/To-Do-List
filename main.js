@@ -58,11 +58,10 @@ function applyTheme(){
 
 }
 function applyItem(){
-    for(let i=4 ; i<parseInt(localStorage.getItem("jj")); i++){    ////////////////////////////////////////////////////////
+    for(let i=4 ; i<parseInt(localStorage.getItem("jj")); i++){    
         let newLi=document.createElement("li");
         newLi.className="list-group-item";
         newLi.textContent=localStorage.getItem(`cItem${i}`);
-        // newLi.setAttribute('style', 'draggable: true');
         newLi.draggable="true";
         let newDel=document.createElement("button");
         newDel.className="btn btn-danger btn-sm float-end delete";
@@ -71,7 +70,6 @@ function applyItem(){
         itemsList.append(newLi);
     }
     
-    // console.log(parseInt(localStorage.getItem("jj")));
 
 }
 themeOptions.forEach( (theme)=>{
@@ -112,6 +110,7 @@ function addItem(e){
     newLi.append(newDel);
     itemsList.append(newLi);
     storeItem(e.target[0].value);
+    e.target[0].value="";
 }
 
 function deleteDo(e){
@@ -142,11 +141,10 @@ function deleteDo(e){
 function searchDo(e){
 
     let item=e.target.value.toLowerCase();
-    console.log(e.target.value.toLowerCase());
-    let searchSpace= document.getElementsByTagName("li") ;
+    let searchSpace= document.querySelectorAll("li") ;
 
     Array.from(searchSpace).forEach( (i)=>{
-        let text=i.textContent.textContent.toLowerCase();
+        let text=i.textContent.toLowerCase();
         if( text.includes(item)  ){
             i.style.display="block";
         }
@@ -160,9 +158,8 @@ function searchDo(e){
 
 
 // DRAG AND DROP //
-let updatedItem=document.getElementsByClassName("list-group-item");
-// console.log(updatedItem);
 
+let updatedItem=document.getElementsByClassName("list-group-item");
 let dragSrcContent;
 
 for(let li of updatedItem){
@@ -172,11 +169,8 @@ for(let li of updatedItem){
     li.addEventListener( "drop" , dragDrop );
 
 }
-// console.log(item);
 function dragStart(e){
-    // let content1=this.firstChild.textContent;
     dragSrcContent=this;
-    // console.log(this.value);
     e.dataTransfer.effectAllowed="move";
     e.dataTransfer.setData("text/html",dragSrcContent.firstChild.textContent);
 }
@@ -192,14 +186,12 @@ function dragDrop(e){
     for(let i=0 ; i<parseInt(localStorage.getItem("jj")) ; i++){
         if( localStorage.getItem( `cItem${i}` ) === value1 ){
             ii1=i;
-            // localStorage.removeItem(`cItem${i}`);
             i=parseInt(localStorage.getItem("jj"));
         }
     }
     for(let i=0 ; i<parseInt(localStorage.getItem("jj")) ; i++){
         if( localStorage.getItem( `cItem${i}` ) === value2 ){
             ii2=i;
-            // localStorage.removeItem(`cItem${i}`);
             i=parseInt(localStorage.getItem("jj"));
         }
     }
